@@ -1,29 +1,31 @@
 /*
   Write your explanation here as a comment.
   For example, you might say...
-    -This function has [insert time complexity], because [some line of code] means [something describing the nature of the implementation]
 */
 
 
 // Problem 1: Retrieval of a value from a hash table using the following function with regard to the size of the hash table. knowing that the key never get very large
 
 /*
- Complexity:linear(running time of loop).
+ Complexity:constant. 
+ -This function has [O(1)], because [for (var i = 0; i < key.length; i++)] means [because the lenghth is not large ]
+
  */
 
 var retrieve = function(key) {
   var hash = 0;
   for (var i = 0; i < key.length; i++) {
-    hash = (hash + Math.pow(i, hash)) % array.length;
+    hash = (hash + Math.pow(i,hash)) % array.length;
   }
   return array[hash];
 };
 
 
 // Problem 2: sortedArrayContainsItem with regard to the length of the passed-in array
-////cons
 /*
  Complexity:logarithmic: running time of loop but with if condition.
+  -This function has [log(n)], because [var center = Math.floor(array.length / 2)] means [because we itarete on the half of the array.]
+
  */
 
 
@@ -40,7 +42,8 @@ var sortedArrayContainsItem = function(array, item) {
 // Problem 3: hasDuplicates with regard to the length of the passed in array
 
 /*
- Complexity:quadratic: running time of two loops.
+ Complexity:quadratic.
+ -This function has [O(n^2)], because [ for (var i = 0; i < array.length; i++) &&& indexOf(item) !== -1 ] means [because we have loop inside loop]
  */
 
 var hasDuplicates = function(array) {

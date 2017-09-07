@@ -43,23 +43,25 @@ var makeSmartPhone = function(phoneNumber, email) {
     this.phoneNumber=phoneNumber;
   };
 
+
   makePhone.prototype.send=function(recipientPhoneNumber, message){
-   return 'sending the message "' + this.message + '" to the phone number ' + this.recipientPhoneNumber + ' from ' + makePhone() ; 
+   return 'sending the message "' + message + '" to the phone number ' + recipientPhoneNumber + ' from ' + this.phoneNumber ; 
   };
+
 
   var makeSmartPhone = function(phoneNumber, email) {
       makePhone.call(phoneNumber,this);
-      this.oldSend=phone.send;
       this.email=email;
+}
+ makeSmartPhone.prototype=Object.create(makePhone.prototype);
+        makeSmartPhone.prototype.constructor=makeSmartPhone;
+
 makeSmartPhone.prototype.send=function(recipientPhoneNumberOrEmail, message) {
-          //send.prototype=Object.create(makeSmartPhone.prototype);
-          ///send.prototype.constructor=send;
-   if (typeof this.recipientPhoneNumberOrEmail === 'number') {
-        makeSmartPhone.call(this);
+    
+   if (typeof recipientPhoneNumberOrEmail === 'number') {
+       return oldSend.call(this, recipientPhoneNumberOrEmail, message);
     } else {
-       return 'sending the message "' + this.message + '" to email ' + this.recipientPhoneNumberOrEmail + ' from ' + this.email;
+       return 'sending the message "' + message + '" to email ' + recipientPhoneNumberOrEmail + ' from ' + this.email;
     }
   };
 
-  return phone;
-};
